@@ -17,7 +17,7 @@ This project implements the complete DDPM pipeline from [Ho et al. (2020)](https
 
 The forward process corrupts data $x_0$ over $T$ timesteps:
 
-$$q(x_t \mid x_0) = \mathcal{N}\left(x_t;\, \sqrt{\bar{\alpha}_t}\, x_0,\, (1 - \bar{\alpha}_t)\, I\right)$$
+$$q(x_t \mid x_0) = \mathcal{N}\left(x_t; \sqrt{\bar{\alpha}_t}\, x_0,\, (1 - \bar{\alpha}_t)\, I\right)$$
 
 where $\bar{\alpha}_t = \prod_{s=1}^{t} (1 - \beta_s)$ and $\beta_t$ is the noise schedule.
 
@@ -25,7 +25,7 @@ where $\bar{\alpha}_t = \prod_{s=1}^{t} (1 - \beta_s)$ and $\beta_t$ is the nois
 
 The model is trained with the simplified loss:
 
-$$\mathcal{L} = \mathbb{E}_{t, x_0, \epsilon}\left[\|\epsilon - \epsilon_\theta(x_t, t)\|^2\right]$$
+$$\mathcal{L} = \mathbb{E}_{t, x_0, \epsilon}\left[||\epsilon - \epsilon_\theta(x_t, t)||^2\right]$$
 
 ### Noise Schedules
 
@@ -60,7 +60,7 @@ The **cosine schedule** achieved the best FID (27.1) and IS (7.2), with the fast
 ## Project Structure
 
 ```
-diffusion/
+ddpm-noise-schedule-ablation/
 ├── config.py              # Hyperparameters and training configuration
 ├── noise_schedules.py     # Linear, cosine, and sigmoid noise schedules
 ├── unet.py                # U-Net score estimator architecture
