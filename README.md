@@ -77,8 +77,16 @@ diffusion/
 
 ## Setup
 
+This project uses [uv](https://docs.astral.sh/uv/) for fast, reliable dependency management.
+
 ```bash
-pip install -r requirements.txt
+# Install uv (if you don't have it)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Create a virtual environment and install dependencies
+uv venv
+source .venv/bin/activate
+uv pip install -r requirements.txt
 ```
 
 ## Usage
